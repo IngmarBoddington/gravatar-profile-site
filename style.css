@@ -29,10 +29,13 @@ a { color:#5082B9; text-decoration:none; }
 #accounts .flickr a     { background-color:#ff0084; }
 #accounts .foursquare a { background-color:#25a0ca; }
 #accounts .friendfeed a {} /* need color */
-#accounts .goodreads a  {} /* need color */
+#accounts .github a     { background-color:#4183c4; }
+#accounts .goodreads a  { background-color:#EBEAD8; color: #333333; } /* need color */
 #accounts .google a     { background-color:#db4a39; }
+#accounts .lastfm a   { background-color:#c3000d; }
 #accounts .linkedin a   { background-color:#0e76a8; }
 #accounts .posterous a  {} /* need color */
+#accounts .steam a  { background-color:#222223; }
 #accounts .tripit a     {} /* need color */
 #accounts .tumblr a     { background-color:#34526f; }
 #accounts .twitter a    { background-color:#00acee; }

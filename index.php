@@ -1,76 +1,60 @@
 <?php
+//Forked from https://github.com/jrtashjian/gravatar-profile-site, modified to use static values
 
-define( 'GRAVATAR_EMAIL', 'YOUR_EMAIL_ADDRESS' );
-define( 'GRAVATAR_CACHE_TIME', 60 * 60 * 24 ); // Cache for 1 day
-define( 'GRAVATAR_CACHE_FILE', 'gravatar-profile.json' );
-
-if ( file_exists( GRAVATAR_CACHE_FILE ) && ( time() - filemtime( GRAVATAR_CACHE_FILE ) ) < GRAVATAR_CACHE_TIME ) {
-	$json = file_get_contents( GRAVATAR_CACHE_FILE );
-	$gravatar_profile = json_decode( $json );
-} else {
-	$hash = md5( strtolower( trim( GRAVATAR_EMAIL ) ) );
-	$lang = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
-	$context = stream_context_create( array( 'http' => array( 'header' => "Accept-Language: $lang" ) ) );
-	$json = file_get_contents( sprintf( 'https://www.gravatar.com/%s.json', $hash ), false, $context );
-	file_put_contents( GRAVATAR_CACHE_FILE, $json );
-	$gravatar_profile = json_decode( $json );
-}
-
-if ( empty( $gravatar_profile ) ) exit( 'Gravatar profile was not found.' );
-$gravatar_profile = $gravatar_profile->entry[0];
-
+$name = 'Ingmar Boddington';
 $services = array(
-	'blogger' => 'Blogger',
-	'facebook' => 'Facebook',
-	'flickr' => 'Flickr',
-	'foursquare' => 'Foursquare',
-	'friendfeed' => 'FriendFeed',
-	'goodreads' => 'Goodreads',
-	'google' => 'Google',
-	'linkedin' => 'LinkedIn',
-	'posterous' => 'Posterous',
-	'tripit' => 'TripIt',
-	'tumblr' => 'Tumblr',
-	'twitter' => 'Twitter',
-	'vimeo' => 'Vimeo',
-	'wordpress' => 'WordPress',
-	'yahoo' => 'Yahoo',
-	'youtube' => 'YouTube',
+    'GitHub' => 'https://github.com/IngmarBoddington',
+    'GoodReads' => 'https://www.goodreads.com/user/show/20528983-ingmar-boddington',
+    'Last.fm' => 'http://www.last.fm/user/Ingmar1337',
+    'LinkedIn' => 'http://uk.linkedin.com/in/ingmarboddington',
+    'Steam' => 'http://steamcommunity.com/id/IngBoss',
+    'Twitter' => 'https://twitter.com/IBoddington'
 );
+
+//Just use false to disable any related elements
+$profileImage = 'image/profile.jpeg';
+$backgroundImage = 'image/background.jpg';
+$text = 'Code monkey living in Sheffield, I used to blog on <a href="http://www.glowingminds.co.uk/">glowingminds.co.uk</a>. Work at <a href="http:///www.plus.net/">plus.net</a>.';
+
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title><?php echo $gravatar_profile->displayName; ?></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" >
-	<link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-<body<?php echo empty( $gravatar_profile->profileBackground ) ? ' class="no-background"' : ''; ?>>
+    <head>
+	    <title><?php echo $name ? $name : ''; ?></title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" >
+	    <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
 
-	<div id="container" class="h-card vcard">
+    <body<?php $backgroundImage ? '' : ' class="no-background"'; ?>>
 
-		<?php if ( !empty( $gravatar_profile->profileBackground ) ) : ?>
-			<div id="cover" style="background-image:url( <?php echo $gravatar_profile->profileBackground->url; ?> );"></div>
-		<?php endif; ?>
+        <div id="container" class="h-card vcard">
 
-		<div id="profile">
+            <?php if ($backgroundImage) : ?>
+                <div id="cover" style="background-image:url( <?php echo $backgroundImage; ?> );"></div>
+            <?php endif; ?>
 
-			<div id="bio" class="section">
-				<img class="u-photo photo" height="80" width="80" src="<?php echo $gravatar_profile->thumbnailUrl; ?>?s=160" />
-				<h1 class="p-name fn"><?php echo $gravatar_profile->displayName; ?></h1>
-				<p class="p-note"><?php echo nl2br( $gravatar_profile->aboutMe ); ?></p>
-			</div>
+            <div id="profile">
 
-			<?php if ( !empty( $gravatar_profile->accounts ) ) : ?>
-				<ul id="accounts" class="section">
-					<?php foreach ( $gravatar_profile->accounts as $account ) : ?>
-						<li class="<?php echo $account->shortname; ?>"><a class="u-url url" rel="me" href="<?php echo $account->url; ?>"><?php echo array_key_exists( $account->shortname, $services ) ? $services[ $account->shortname ] : $account->shortname; ?></a></li>
-					<?php endforeach; ?>
-				</ul>
-			<?php endif; ?>
+                <div id="bio" class="section">
+                    <?php if ($profileImage) : ?>
+                        <img class="u-photo photo" height="80" width="80" src="<?php echo $profileImage; ?>?s=160" />
+                    <?php endif; ?>
+                    <h1 class="p-name fn"><?php echo $name; ?></h1>
+                    <?php if (isset($text)) : ?>
+                         <p class="p-note"><?php echo $text; ?></p>
+                    <?php endif; ?>
+                </div>
 
-		</div>
-	</div>
+                <?php if ( !empty( $services ) ) : ?>
+                    <ul id="accounts" class="section">
+                        <?php foreach ( $services as $service => $url ) : ?>
+                            <li class="<?php echo strtolower(str_replace('.', '', $service)); ?>"><a class="u-url url" rel="me" href="<?php echo $url; ?>"><?php echo $service; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
 
-</body>
+            </div>
+        </div>
+
+    </body>
 </html>
