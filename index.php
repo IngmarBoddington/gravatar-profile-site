@@ -4,9 +4,11 @@
 $name = 'Ingmar Boddington';
 $services = array(
     'GitHub' => 'https://github.com/IngmarBoddington',
+    'Gists' => 'https://gist.github.com/IngmarBoddington',
     'GoodReads' => 'https://www.goodreads.com/user/show/20528983-ingmar-boddington',
     'Last.fm' => 'http://www.last.fm/user/Ingmar1337',
     'LinkedIn' => 'http://uk.linkedin.com/in/ingmarboddington',
+    'StackOverflow' => 'http://stackoverflow.com/users/1237595/ing',
     'Steam' => 'http://steamcommunity.com/id/IngBoss',
     'Twitter' => 'https://twitter.com/IBoddington'
 );
@@ -14,7 +16,7 @@ $services = array(
 //Just use false to disable any related elements
 $profileImage = 'image/profile.jpeg';
 $backgroundImage = 'image/background.jpg';
-$text = 'Code monkey living in Sheffield, I used to blog on <a href="http://www.glowingminds.co.uk/">glowingminds.co.uk</a>. Work at <a href="http:///www.plus.net/">plus.net</a>.';
+$text = 'Code monkey living in Sheffield, UK. Currently working at <a href="http:///www.plus.net/">plus.net</a> on their php based sites and backend systems, used to blog on <a href="http://www.glowingminds.co.uk/">glowingminds.co.uk</a> and <a href="http://www.onlineretailingblog.com/">onlineretailingblog.com</a>.';
 
 ?>
 <!DOCTYPE html>
@@ -55,6 +57,15 @@ $text = 'Code monkey living in Sheffield, I used to blog on <a href="http://www.
 
             </div>
         </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+            ga('create', 'UA-7152965-11', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </body>
 </html>
