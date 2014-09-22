@@ -10,13 +10,14 @@ $services = array(
     'LinkedIn' => 'http://uk.linkedin.com/in/ingmarboddington',
     'StackOverflow' => 'http://stackoverflow.com/users/1237595/ing',
     'Steam' => 'http://steamcommunity.com/id/IngBoss',
+    'Strava' => 'http://www.strava.com/athletes/6515680',
     'Twitter' => 'https://twitter.com/IBoddington'
 );
 
 //Just use false to disable any related elements
 $profileImage = 'image/profile.jpeg';
 $backgroundImage = 'image/background.jpg';
-$text = 'Code monkey living in Sheffield, UK. Currently working at <a href="http:///www.plus.net/">plus.net</a> on their php based sites and backend systems, used to blog on <a href="http://www.glowingminds.co.uk/">glowingminds.co.uk</a> and <a href="http://www.onlineretailingblog.com/">onlineretailingblog.com</a>.';
+$text = 'Codemonkey / metalhead living in Sheffield, UK. Currently working at <a href="http://www.plus.net/">plus.net</a> on their php based sites and backend systems, has a (dormant) codey blog at <a href="http://www.glowingminds.co.uk/">glowingminds.co.uk</a>. Used to work at <a href="http://www.bunches.co.uk/">Bunches.co.uk</a>, Nottingham Uni Graduate, Zend Certified Engineer.';
 
 ?>
 <!DOCTYPE html>
