@@ -10,7 +10,7 @@ $services = array(
     'LinkedIn' => 'http://uk.linkedin.com/in/ingmarboddington',
     'StackOverflow' => 'http://stackoverflow.com/users/1237595/ing',
     'Steam' => 'http://steamcommunity.com/id/IngBoss',
-    'Strava' => 'http://www.strava.com/athletes/6515680',
+    'Strava' => 'http://www.strava.com/athletes/ingmar_boddington',
     'Twitter' => 'https://twitter.com/IBoddington'
 );
 
